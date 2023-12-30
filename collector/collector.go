@@ -203,6 +203,13 @@ func WithNetwatch() Option {
 	}
 }
 
+// WithFirewall enables firewall rule metrics
+func WithFirewall() Option {
+	return func(c *collector) {
+		c.collectors = append(c.collectors, newFirewallCollector())
+	}
+}
+
 // Option applies options to collector
 type Option func(*collector)
 
